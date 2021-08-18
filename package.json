@@ -4,7 +4,8 @@
   "description": "Life tracking app for the commander MTG format.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx}\"",
+    "lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\" --quiet"
   },
   "repository": {
     "type": "git",
@@ -21,5 +22,10 @@
   "bugs": {
     "url": "https://github.com/grimSkepsis/life-linked/issues"
   },
-  "homepage": "https://github.com/grimSkepsis/life-linked#readme"
+  "homepage": "https://github.com/grimSkepsis/life-linked#readme",
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "prettier": "^2.3.2"
+  }
 }
