@@ -1,0 +1,25 @@
+{
+  "name": "life-linked",
+  "version": "1.0.0",
+  "description": "Life tracking app for the commander MTG format.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/grimSkepsis/life-linked.git"
+  },
+  "keywords": [
+    "life",
+    "tracking",
+    "mtg",
+    "commander"
+  ],
+  "author": "grimSkepsis",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/grimSkepsis/life-linked/issues"
+  },
+  "homepage": "https://github.com/grimSkepsis/life-linked#readme"
+}
