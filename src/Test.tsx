@@ -1,6 +1,6 @@
 import React from "react";
 
-const Test = (props) => {
+const Test = (props: { test: string }) => {
   return <div>test me {props.test}</div>;
 };
 
