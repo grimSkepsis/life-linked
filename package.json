@@ -2,9 +2,9 @@
   "name": "life-linked",
   "version": "1.0.0",
   "description": "Life tracking app for the commander MTG format.",
-  "main": "index.js",
+  "main": "App.js",
   "scripts": {
-    "dev": "parcel dist/index.html",
+    "dev": "parcel src/index.html",
     "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx}\"",
     "lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\" --quiet",
     "typecheck": "tsc --noEmit"
