@@ -18,9 +18,9 @@ const App = () => {
   }, []);
 
   return (
-    <div>
-      <h1>Test title</h1>
-      {players.map(renderPlayer)}
+    <div className="w-full h-full flex flex-col">
+      <h1>Life Linked</h1>
+      <div className="flex flex-wrap flex-1">{players.map(renderPlayer)}</div>
     </div>
   );
 
