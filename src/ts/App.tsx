@@ -25,7 +25,32 @@ const App = () => {
   );
 
   function renderPlayer({ id, name, health }: PlayerData): ReactElement {
-    return <PlayerTile key={id} name={name} health={health} />;
+    return (
+      <PlayerTile
+        key={id}
+        name={name}
+        health={health}
+        decrementHealthCallback={() => decrementHealth(id)}
+        incrementHealthCallback={() => incrementHealth(id)}
+      />
+    );
+  }
+
+  function decrementHealth(id: string): void {
+    var newPlayers: PlayerData[] = [...players] ?? [];
+    var playerToBeModified = newPlayers.find((player) => player.id == id);
+    if (playerToBeModified) {
+      playerToBeModified.health--;
+    }
+    setPlayers(newPlayers);
+  }
+  function incrementHealth(id: string): void {
+    var newPlayers: PlayerData[] = [...players] ?? [];
+    var playerToBeModified = newPlayers.find((player) => player.id == id);
+    if (playerToBeModified) {
+      playerToBeModified.health++;
+    }
+    setPlayers(newPlayers);
   }
 };
 
