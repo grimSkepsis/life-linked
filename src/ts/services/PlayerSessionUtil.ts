@@ -4,7 +4,7 @@ export type PlayerData = {
   health: number;
 };
 
-const NUM_PLAYERS = 4;
+const NUM_PLAYERS = 6;
 
 export function getFakePlayerData(): PlayerData[] {
   var players: PlayerData[] = [];
