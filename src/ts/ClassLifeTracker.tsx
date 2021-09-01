@@ -1,4 +1,4 @@
-import { ReactElement, useState } from "react";
+import { ReactElement } from "react";
 import { PlayerData } from "./services/PlayerSessionUtil";
 import PlayerTile from "./PlayerTile";
 
@@ -16,7 +16,7 @@ const ClassicLifeTracker = ({
   return (
     <div className="w-full h-full flex flex-col">
       <h1 className="text-white">Life Linked</h1>
-      <div className="flex flex-wrap flex-1">
+      <div className="flex flex-wrap flex-1 classic-tracker">
         {playerData.map(renderPlayer)}
       </div>
     </div>
@@ -40,23 +40,24 @@ const ClassicLifeTracker = ({
   }
 
   function getOrientationClass(idx: number, numPlayers: number): string {
-    const flippedRotation = "-rotate-180";
+    const flippedRotation = "-rotate-180 flipped";
+    const notFlipped = "not-flipped";
     var orientationClass = "";
     switch (numPlayers) {
       case 2:
-        orientationClass = idx == 0 ? flippedRotation : "";
+        orientationClass = idx == 0 ? flippedRotation : notFlipped;
         break;
       case 3:
-        orientationClass = idx <= 1 ? flippedRotation : "";
+        orientationClass = idx <= 1 ? flippedRotation : notFlipped;
         break;
       case 4:
-        orientationClass = idx <= 1 ? flippedRotation : "";
+        orientationClass = idx <= 1 ? flippedRotation : notFlipped;
         break;
       case 5:
-        orientationClass = idx <= 2 ? flippedRotation : "";
+        orientationClass = idx <= 2 ? flippedRotation : notFlipped;
         break;
       default:
-        orientationClass = idx <= 2 ? flippedRotation : "";
+        orientationClass = idx <= 2 ? flippedRotation : notFlipped;
     }
     return orientationClass;
   }

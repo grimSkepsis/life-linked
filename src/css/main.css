@@ -8,3 +8,20 @@ body,
   width: 100%;
   height: 100%;
 }
+
+@media (orientation: portrait) {
+  .classic-tracker {
+    flex-direction: column;
+  }
+
+  .classic-tracker .flipped {
+    transform: rotate(90deg);
+    height: 33%;
+    width: unset;
+  }
+  .classic-tracker .not-flipped {
+    transform: rotate(-90deg);
+    height: 33%;
+    width: unset;
+  }
+}
