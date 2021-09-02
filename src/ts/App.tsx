@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import { PlayerSessionService } from "./services/PlayerSessionService";
 import { PlayerData } from "./services/PlayerSessionUtil";
 import ClassicLifeTracker from "./ClassLifeTracker";
+import ClassicTrackerMenu from "./ClassicTrackerMenu";
 
 const App = (): ReactElement => {
   var sessionService = new PlayerSessionService();
@@ -19,11 +20,7 @@ const App = (): ReactElement => {
 
   return (
     <div className="w-full h-full bg-black">
-      <ClassicLifeTracker
-        playerData={players}
-        decrementHealthCallback={decrementHealth}
-        incrementHealthCallback={incrementHealth}
-      />
+      <ClassicTrackerMenu />
     </div>
   );
 

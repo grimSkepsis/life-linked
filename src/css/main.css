@@ -9,6 +9,30 @@ body,
   height: 100%;
 }
 
+input[type="radio"] {
+  /* display: none; */
+  opacity: 0;
+  position: absolute;
+  pointer-events: none;
+}
+
+label {
+  display: inline-block;
+  background-color: blue;
+  padding: 4px 11px;
+  font-family: Arial;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+input[type="radio"]:checked + label {
+  background-color: red;
+}
+
+input[type="radio"]:focus + label {
+  border: 2px solid green;
+}
+
 @media (orientation: portrait) {
   .classic-tracker {
     flex-direction: column;
