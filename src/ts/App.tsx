@@ -4,11 +4,13 @@ import { PlayerSessionService } from "./services/PlayerSessionService";
 import { PlayerData } from "./services/PlayerSessionUtil";
 import ClassicLifeTracker from "./ClassLifeTracker";
 import ClassicTrackerMenu from "./ClassicTrackerMenu";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 const App = (): ReactElement => {
   var sessionService = new PlayerSessionService();
-
   const [players, setPlayers] = useState<PlayerData[]>([]);
+  const [numPlayers, setNumPlayers] = useState<number>(2);
+  const [startingHealth, setStartingHealth] = useState<number>(40);
 
   useEffect(() => {
     async function fetchPlayers(): Promise<void> {
@@ -20,7 +22,26 @@ const App = (): ReactElement => {
 
   return (
     <div className="w-full h-full bg-black">
-      <ClassicTrackerMenu />
+      <Router>
+        <Switch>
+          <Route path="/classic-tracker">
+            <ClassicLifeTracker
+              playerData={players}
+              incrementHealthCallback={incrementHealth}
+              decrementHealthCallback={decrementHealth}
+            />
+          </Route>
+          <Route path="/">
+            <ClassicTrackerMenu
+              numPlayers={numPlayers}
+              startingHealth={startingHealth}
+              updateNumPlayersCallback={updateNumPlayers}
+              updateStartingHealthCallback={updateStartingHealth}
+              startGameCallback={startClassicGame}
+            />
+          </Route>
+        </Switch>
+      </Router>
     </div>
   );
 
@@ -39,6 +60,25 @@ const App = (): ReactElement => {
       playerToBeModified.health++;
     }
     setPlayers(newPlayers);
+  }
+
+  function updateNumPlayers(numPlayers: number): void {
+    setNumPlayers(numPlayers);
+  }
+  function updateStartingHealth(health: number): void {
+    setStartingHealth(health);
+  }
+
+  function startClassicGame(): void {
+    var classicPlayers: PlayerData[] = [];
+    for (let i = 0; i < numPlayers; i++) {
+      classicPlayers.push({
+        id: String(i),
+        name: `Player ${i}`,
+        health: startingHealth,
+      });
+    }
+    setPlayers(classicPlayers);
   }
 };
 

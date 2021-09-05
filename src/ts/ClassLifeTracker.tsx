@@ -1,6 +1,7 @@
 import { ReactElement } from "react";
 import { PlayerData } from "./services/PlayerSessionUtil";
 import PlayerTile from "./PlayerTile";
+import { Link } from "react-router-dom";
 
 type Props = {
   playerData: PlayerData[];
@@ -14,8 +15,12 @@ const ClassicLifeTracker = ({
   incrementHealthCallback,
 }: Props): ReactElement => {
   return (
-    <div className="w-full h-full flex flex-col">
-      <h1 className="text-white">Life Linked</h1>
+    <div className="w-full h-full flex flex-col relative">
+      <div className="tracker-header flex">
+        <div className="text-white">
+          <Link to="/">Back</Link>
+        </div>
+      </div>
       <div className="flex flex-wrap flex-1 classic-tracker">
         {playerData.map(renderPlayer)}
       </div>
