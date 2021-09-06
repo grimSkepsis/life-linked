@@ -11,6 +11,7 @@ const App = (): ReactElement => {
   const [players, setPlayers] = useState<PlayerData[]>([]);
   const [numPlayers, setNumPlayers] = useState<number>(2);
   const [startingHealth, setStartingHealth] = useState<number>(40);
+  const [hasCustomHealth, setHasCustomHealth] = useState<boolean>(false);
 
   useEffect(() => {
     async function fetchPlayers(): Promise<void> {
@@ -38,6 +39,8 @@ const App = (): ReactElement => {
               updateNumPlayersCallback={updateNumPlayers}
               updateStartingHealthCallback={updateStartingHealth}
               startGameCallback={startClassicGame}
+              setCustomLifeTotalCallback={setCustomLifeTotal}
+              hasCustomHealth={hasCustomHealth}
             />
           </Route>
         </Switch>
@@ -66,6 +69,7 @@ const App = (): ReactElement => {
     setNumPlayers(numPlayers);
   }
   function updateStartingHealth(health: number): void {
+    setHasCustomHealth(false);
     setStartingHealth(health);
   }
 
@@ -79,6 +83,11 @@ const App = (): ReactElement => {
       });
     }
     setPlayers(classicPlayers);
+  }
+
+  function setCustomLifeTotal(value: number) {
+    setHasCustomHealth(true);
+    setStartingHealth(value);
   }
 };
 

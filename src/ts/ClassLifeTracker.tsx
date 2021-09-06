@@ -74,7 +74,7 @@ const ClassicLifeTracker = ({
         sizeClass = "w-full";
         break;
       case 3:
-        sizeClass = "w-1/2";
+        sizeClass = idx <= 1 ? "w-1/2" : "w-full";
         break;
       case 4:
         sizeClass = "w-1/2";

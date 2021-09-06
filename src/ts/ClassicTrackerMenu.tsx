@@ -5,9 +5,11 @@ import * as R from "ramda";
 type Props = {
   startingHealth: number;
   numPlayers: number;
+  hasCustomHealth: boolean;
   updateStartingHealthCallback: (health: number) => void;
   updateNumPlayersCallback: (numPlayers: number) => void;
   startGameCallback: () => void;
+  setCustomLifeTotalCallback: (health: number) => void;
 };
 
 const ClassicTrackerMenu = ({
@@ -16,6 +18,8 @@ const ClassicTrackerMenu = ({
   updateNumPlayersCallback,
   updateStartingHealthCallback,
   startGameCallback,
+  setCustomLifeTotalCallback,
+  hasCustomHealth,
 }: Props): ReactElement => {
   var renderHealthOption = R.curry(renderOption)("startingHealth");
   var renderPlayerOption = R.curry(renderOption)("numPlayers");
@@ -51,10 +55,20 @@ const ClassicTrackerMenu = ({
           {renderHealthOption("Fourty")(startingHealth == 40)(() =>
             updateStartingHealthCallback(40)
           )}
-          {renderHealthOption("Custom")(
-            !isStandardHealthAmount(startingHealth)
-          )(() => updateStartingHealthCallback(50))}
+          {renderHealthOption("Custom")(hasCustomHealth)(() =>
+            setCustomLifeTotalCallback(50)
+          )}
         </div>
+        {hasCustomHealth ? (
+          <div className="text-black">
+            <input
+              type="text"
+              value={startingHealth}
+              onChange={onSetCustomHealth}
+            />
+          </div>
+        ) : null}
+
         <Link to="/classic-tracker">
           <button className="bg-blue-500 mt-5" onClick={startGameCallback}>
             Start Game
@@ -63,6 +77,10 @@ const ClassicTrackerMenu = ({
       </div>
     </div>
   );
+
+  function onSetCustomHealth(event: React.ChangeEvent<HTMLInputElement>): void {
+    setCustomLifeTotalCallback(Number(event.target.value));
+  }
 
   function renderOption(
     name: string,
@@ -83,10 +101,6 @@ const ClassicTrackerMenu = ({
         <label htmlFor={value}> {value}</label>
       </div>
     );
-  }
-
-  function isStandardHealthAmount(health: number): boolean {
-    return health == 20 || health == 30 || health == 40;
   }
 };
 
