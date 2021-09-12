@@ -70,7 +70,7 @@ const ClassicTrackerMenu = ({
         ) : null}
 
         <Link to="/classic-tracker">
-          <button className="bg-blue-500 mt-5" onClick={startGameCallback}>
+          <button className="mt-5 btn" onClick={startGameCallback}>
             Start Game
           </button>
         </Link>

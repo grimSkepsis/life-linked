@@ -2,11 +2,28 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  font-family: "Space Mono", monospace;
+  text-shadow: 4px 2px #ff0000;
+}
 html,
 body,
 #root {
   width: 100%;
   height: 100%;
+}
+
+body {
+  background-image: linear-gradient(45deg, black 25%, transparent 25%),
+    linear-gradient(-45deg, black 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, black 75%),
+    linear-gradient(-45deg, transparent 75%, black 75%);
+  background-size: 20px 20px;
+  background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+}
+
+.app-bg {
+  background: radial-gradient(transparent, black 85%);
 }
 
 input[type="radio"] {
@@ -16,21 +33,29 @@ input[type="radio"] {
   pointer-events: none;
 }
 
-label {
+label,
+.btn {
   display: inline-block;
-  background-color: blue;
+  background-color: black;
   padding: 4px 11px;
-  font-family: Arial;
   font-size: 16px;
   cursor: pointer;
+  border: 2px solid black;
+  transition: all 200ms;
 }
 
 input[type="radio"]:checked + label {
-  background-color: red;
+  background-color: white;
+  box-sizing: border-box;
+  color: red;
+  border: 2px solid white;
+  transform: translateZ(100px) scale(1.2);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  text-shadow: 4px 2px white;
 }
 
 input[type="radio"]:focus + label {
-  border: 2px solid green;
+  border: 2px solid red;
 }
 
 @media (orientation: portrait) {

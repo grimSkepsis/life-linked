@@ -22,7 +22,7 @@ const App = (): ReactElement => {
   }, []);
 
   return (
-    <div className="w-full h-full bg-black">
+    <div className="w-full h-full app-bg">
       <Router>
         <Switch>
           <Route path="/classic-tracker">
