@@ -19,7 +19,7 @@ const PlayerTile = ({
 }: Props): ReactElement => {
   return (
     <div
-      className={`${sizeClass} transform ${orientationClass}  flex-grow h-auto flex justify-center items-center`}
+      className={`${sizeClass} transform ${orientationClass} player-tile flex-grow h-auto flex justify-center items-center`}
     >
       <div className="flex flex-col justify-center">
         <div className="text-center text-white mb-2">{name}</div>

@@ -2,8 +2,10 @@ import { ReactElement } from "react";
 import { PlayerData } from "./services/PlayerSessionUtil";
 import PlayerTile from "./PlayerTile";
 import { Link } from "react-router-dom";
+import { withRouter } from "react-router";
+import { RouteComponentProps, useHistory } from "react-router-dom";
 
-type Props = {
+type Props = RouteComponentProps & {
   playerData: PlayerData[];
   decrementHealthCallback: (id: string) => void;
   incrementHealthCallback: (id: string) => void;
@@ -14,18 +16,25 @@ const ClassicLifeTracker = ({
   decrementHealthCallback,
   incrementHealthCallback,
 }: Props): ReactElement => {
+  const history = useHistory();
+
   return (
     <div className="w-full h-full flex flex-col relative">
       <div className="tracker-header flex">
-        <div className="text-white">
-          <Link to="/">Back</Link>
-        </div>
+        <button className="text-white" onClick={handleBack}>
+          Back
+        </button>
       </div>
       <div className="flex flex-wrap flex-1 classic-tracker">
         {playerData.map(renderPlayer)}
       </div>
     </div>
   );
+
+  function handleBack(): void {
+    void document.exitFullscreen();
+    history.push("/");
+  }
 
   function renderPlayer(
     { id, name, health }: PlayerData,
@@ -89,4 +98,4 @@ const ClassicLifeTracker = ({
   }
 };
 
-export default ClassicLifeTracker;
+export default withRouter(ClassicLifeTracker);

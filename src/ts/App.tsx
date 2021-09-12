@@ -83,6 +83,7 @@ const App = (): ReactElement => {
       });
     }
     setPlayers(classicPlayers);
+    document.getElementById("root")?.requestFullscreen();
   }
 
   function setCustomLifeTotal(value: number) {
