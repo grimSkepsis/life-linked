@@ -26,7 +26,7 @@ const ClassicTrackerMenu = ({
   return (
     <div className="w-full h-full flex justify-center items-center">
       <div className="text-white inline-block">
-        <p>Num Players: </p>
+        <p className="menu-title">Num Players: </p>
         <div className="flex">
           {renderPlayerOption("Two")(numPlayers == 2)(() =>
             updateNumPlayersCallback(2)
@@ -44,7 +44,7 @@ const ClassicTrackerMenu = ({
             updateNumPlayersCallback(6)
           )}
         </div>
-        <p className="mt-5">Starting Life: </p>
+        <p className="mt-5 menu-title">Starting Life: </p>
         <div className="flex">
           {renderHealthOption("Twenty")(startingHealth == 20)(() =>
             updateStartingHealthCallback(20)
@@ -89,7 +89,7 @@ const ClassicTrackerMenu = ({
     callBack: () => void
   ): ReactElement {
     return (
-      <div>
+      <div className="menu-option">
         <input
           type="radio"
           id={value}
