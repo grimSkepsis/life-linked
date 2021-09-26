@@ -36,6 +36,10 @@ input[type="radio"] {
   pointer-events: none;
 }
 
+input[type="text"] {
+  text-shadow: none;
+}
+
 label,
 .btn {
   display: inline-block;

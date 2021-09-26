@@ -5,6 +5,7 @@ import { PlayerData } from "./services/PlayerSessionUtil";
 import ClassicLifeTracker from "./ClassLifeTracker";
 import ClassicTrackerMenu from "./ClassicTrackerMenu";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import CreateOrJoinRoomMenu from "./CreateOrJoinRoomMenu";
 
 const App = (): ReactElement => {
   var sessionService = new PlayerSessionService();
@@ -32,7 +33,7 @@ const App = (): ReactElement => {
               decrementHealthCallback={decrementHealth}
             />
           </Route>
-          <Route path="/">
+          <Route path="/classic-tracker-menu">
             <ClassicTrackerMenu
               numPlayers={numPlayers}
               startingHealth={startingHealth}
@@ -42,6 +43,9 @@ const App = (): ReactElement => {
               setCustomLifeTotalCallback={setCustomLifeTotal}
               hasCustomHealth={hasCustomHealth}
             />
+          </Route>
+          <Route path="/">
+            <CreateOrJoinRoomMenu />
           </Route>
         </Switch>
       </Router>
